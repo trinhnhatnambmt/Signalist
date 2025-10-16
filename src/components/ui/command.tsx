@@ -13,6 +13,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 
+/**
+ * Renders the root command container used by the command palette with a standardized data-slot and default styling.
+ *
+ * @param className - Additional CSS classes merged with the component's default classes
+ * @param props - Additional props forwarded to the underlying command primitive
+ * @returns The command container element configured for use as the palette root
+ */
 function Command({
   className,
   ...props
@@ -29,6 +36,19 @@ function Command({
   )
 }
 
+/**
+ * Renders a modal dialog that hosts the command palette UI.
+ *
+ * Renders a Dialog containing hidden accessible header text and a DialogContent
+ * that wraps the Command container; any children are placed inside the Command.
+ *
+ * @param title - Accessible title for the dialog (default: "Command Palette")
+ * @param description - Accessible description for the dialog (default: "Search for a command to run...")
+ * @param children - Elements rendered inside the command palette (e.g., input, list, items)
+ * @param className - Additional class names applied to the DialogContent wrapper
+ * @param showCloseButton - Whether the DialogContent shows a close button (default: true)
+ * @returns The command-palette dialog element
+ */
 function CommandDialog({
   title = "Command Palette",
   description = "Search for a command to run...",
@@ -60,6 +80,13 @@ function CommandDialog({
   )
 }
 
+/**
+ * Renders the command-palette text input with a leading search icon and built-in styling.
+ *
+ * @param className - Additional CSS classes to apply to the input element
+ * @param props - All other props are forwarded to the underlying cmdk `CommandPrimitive.Input`
+ * @returns The input wrapper element containing the search icon and the styled cmdk input
+ */
 function CommandInput({
   className,
   ...props
@@ -82,6 +109,12 @@ function CommandInput({
   )
 }
 
+/**
+ * Renders the scrollable command list container for the command palette.
+ *
+ * @param className - Additional CSS classes to apply to the list container
+ * @returns A CommandPrimitive.List element representing a vertically scrollable list of commands
+ */
 function CommandList({
   className,
   ...props
@@ -98,6 +131,12 @@ function CommandList({
   )
 }
 
+/**
+ * Renders the empty-state placeholder shown when there are no command items.
+ *
+ * @param props - Props forwarded to the underlying CommandPrimitive.Empty element
+ * @returns The empty placeholder element for the command list
+ */
 function CommandEmpty({
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.Empty>) {
@@ -110,6 +149,13 @@ function CommandEmpty({
   )
 }
 
+/**
+ * Renders a styled wrapper around the cmdk Group primitive for grouping command items.
+ *
+ * Applies standardized typography and layout classes and forwards all props to the underlying cmdk Group.
+ *
+ * @returns A React element that renders a cmdk Group with consistent styling and `data-slot="command-group"`.
+ */
 function CommandGroup({
   className,
   ...props
@@ -126,6 +172,11 @@ function CommandGroup({
   )
 }
 
+/**
+ * Renders a horizontal separator used to divide sections within the command palette.
+ *
+ * @returns A horizontal separator element styled for the command palette.
+ */
 function CommandSeparator({
   className,
   ...props
@@ -139,6 +190,11 @@ function CommandSeparator({
   )
 }
 
+/**
+ * Renders a styled command item used to represent a selectable entry in the command palette.
+ *
+ * @returns A CommandPrimitive.Item element representing an individual selectable command, with styling hooks via `data-slot="command-item"`.
+ */
 function CommandItem({
   className,
   ...props
@@ -155,6 +211,12 @@ function CommandItem({
   )
 }
 
+/**
+ * Renders a right-aligned keyboard shortcut label styled for command items.
+ *
+ * @param className - Additional CSS classes merged with the default shortcut styles
+ * @returns A span element with `data-slot="command-shortcut"` used to display keyboard shortcuts
+ */
 function CommandShortcut({
   className,
   ...props

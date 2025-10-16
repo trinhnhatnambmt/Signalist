@@ -6,30 +6,56 @@ import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Wraps Radix's Dialog root to attach a consistent `data-slot="dialog"` attribute and forward all props.
+ *
+ * @returns The rendered Dialog root element with `data-slot="dialog"` and all provided props forwarded.
+ */
 function Dialog({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />
 }
 
+/**
+ * Renders a dialog trigger element that forwards all given props and sets `data-slot="dialog-trigger"`.
+ *
+ * @returns The dialog trigger element with the provided props applied.
+ */
 function DialogTrigger({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Trigger>) {
   return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />
 }
 
+/**
+ * Renders a Radix Dialog Portal element with a `data-slot="dialog-portal"` attribute.
+ *
+ * @returns A Dialog Portal React element that forwards all provided props and includes the `data-slot="dialog-portal"` attribute.
+ */
 function DialogPortal({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Portal>) {
   return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />
 }
 
+/**
+ * Renders a dialog close control that forwards all props and attaches a `data-slot="dialog-close"` attribute.
+ *
+ * @returns A Close button element with `data-slot="dialog-close"` and the provided props applied.
+ */
 function DialogClose({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Close>) {
   return <DialogPrimitive.Close data-slot="dialog-close" {...props} />
 }
 
+/**
+ * Renders the dialog backdrop overlay with default positioning, backdrop, and open/close animations.
+ *
+ * @param className - Additional CSS class names to merge with the component's default classes
+ * @returns The dialog overlay element with the composed `className`
+ */
 function DialogOverlay({
   className,
   ...props
@@ -46,6 +72,14 @@ function DialogOverlay({
   )
 }
 
+/**
+ * Renders dialog content inside a portal with an overlay and an optional close button.
+ *
+ * @param className - Additional CSS class names merged with the component's base classes
+ * @param children - Elements rendered inside the dialog content area
+ * @param showCloseButton - If `true`, renders a close control in the top-right corner; defaults to `true`
+ * @returns The dialog content element (wrapped by a portal and overlay)
+ */
 function DialogContent({
   className,
   children,
@@ -80,6 +114,11 @@ function DialogContent({
   )
 }
 
+/**
+ * Renders a dialog header container with standard vertical layout, spacing, and responsive text alignment.
+ *
+ * @returns A `div` element with `data-slot="dialog-header"`, composed layout classes, and any forwarded props.
+ */
 function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -90,6 +129,12 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/**
+ * Renders a dialog footer container that arranges action controls responsively.
+ *
+ * @param className - Additional CSS classes to merge with the footer's default layout classes.
+ * @returns A `div` element with `data-slot="dialog-footer"` and responsive layout classes applied; additional `div` props are forwarded.
+ */
 function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -103,6 +148,13 @@ function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/**
+ * Renders a dialog title element with standardized typography and slot metadata.
+ *
+ * Applies default title classes, sets `data-slot="dialog-title"`, and forwards any additional props to the underlying element.
+ *
+ * @returns The rendered dialog title element with combined classes and slot attribute.
+ */
 function DialogTitle({
   className,
   ...props
@@ -116,6 +168,12 @@ function DialogTitle({
   )
 }
 
+/**
+ * Renders a dialog description element with consistent typography and a `data-slot` attribute.
+ *
+ * @param className - Additional CSS class names to merge with the default "text-muted-foreground text-sm" styles
+ * @returns The rendered DialogPrimitive.Description element
+ */
 function DialogDescription({
   className,
   ...props

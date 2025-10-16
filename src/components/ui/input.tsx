@@ -2,6 +2,12 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * A styled, reusable input component that applies a comprehensive Tailwind CSS class set and forwards native input props.
+ *
+ * @param className - Additional CSS classes to append to the component's default class list
+ * @returns A JSX input element with computed classes, `data-slot="input"`, the provided `type`, and all other props forwarded
+ */
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (
     <input
